@@ -1,26 +1,14 @@
 import logo from '../public/missmp-logo.png'
-import {
-  SelfServiceLoginFlow,
-  SubmitSelfServiceLoginFlowBody
-} from '@ory/kratos-client'
+import { SelfServiceLoginFlow } from '@ory/kratos-client'
 import { CardTitle } from '@ory/themes'
 import { AxiosError } from 'axios'
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
-import {
-  ActionCard,
-  CenterLink,
-  createLogoutHandler,
-  Flow,
-  MarginCard
-} from '../pkg'
-import { handleGetFlowError, handleFlowError } from '../pkg/errors'
-import ory from '../pkg/sdk'
+import { ActionCard, CenterLink, createLogoutHandler, MarginCard } from '../pkg'
 
 const Logout: NextPage = () => {
   const [flow, setFlow] = useState<SelfServiceLoginFlow>()
@@ -134,7 +122,6 @@ const Logout: NextPage = () => {
       </MarginCard>
 
       <ActionCard>
-        <p></p>
         <CenterLink data-testid="logout-link" onClick={onLogout}>
           Log out
         </CenterLink>
