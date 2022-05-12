@@ -28,6 +28,7 @@ const Home: NextPage = () => {
         setHasSession(true)
 
         console.log("publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL",publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL)
+        console.log("process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL",process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL)
 
 
 
