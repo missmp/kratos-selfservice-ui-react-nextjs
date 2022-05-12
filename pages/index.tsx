@@ -8,6 +8,10 @@ import { useEffect, useState } from 'react'
 import { DocsButton, MarginCard, createLogoutHandler } from '../pkg'
 import ory from '../pkg/sdk'
 
+import getConfig from 'next/config'
+// Only holds serverRuntimeConfig and publicRuntimeConfig
+const {  publicRuntimeConfig } = getConfig()
+
 const Home: NextPage = () => {
   const [session, setSession] = useState<string>(
     'No valid Session was found.\nPlease sign in to receive one.'
@@ -23,8 +27,12 @@ const Home: NextPage = () => {
         setSession(JSON.stringify(data, null, 2))
         setHasSession(true)
 
-        if (process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL) {
-          window.location.href = process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL
+        console.log("publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL",publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL)
+
+
+
+        if (publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL) {
+          window.location.href = publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL
           return
         }
       })
