@@ -1,25 +1,3 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: kratos-login
-spec:
-  template:
-    spec:
-      imagePullSecrets:
-        - name: gcr-json-key
-      containers:
-        - name: server
-          env:
-            - name: PORT
-              value: "8080"
-            - name: ORY_SDK_URL
-              value: https://auth.missmp.tech/
-            - name: NEXT_PUBLIC_AFTER_LOGGED_IN_URL
-              value: https://app.missmp.tech/
-            - name: NEXT_PUBLIC_FORCE_COOKIE_DOMAIN
-              value: missmp.tech
-
----
 apiVersion: v1
 kind: Service
 metadata:
