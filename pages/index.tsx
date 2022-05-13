@@ -9,7 +9,6 @@ import { DocsButton, MarginCard, createLogoutHandler } from '../pkg'
 import ory from '../pkg/sdk'
 
 import getConfig from 'next/config'
-// Only holds serverRuntimeConfig and publicRuntimeConfig
 const {  publicRuntimeConfig } = getConfig()
 
 const Home: NextPage = () => {
@@ -26,11 +25,6 @@ const Home: NextPage = () => {
       .then(({ data }) => {
         setSession(JSON.stringify(data, null, 2))
         setHasSession(true)
-
-        console.log("publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL",publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL)
-        console.log("process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL",process.env.NEXT_PUBLIC_AFTER_LOGGED_IN_URL)
-
-
 
         if (publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL) {
           window.location.href = publicRuntimeConfig.NEXT_PUBLIC_AFTER_LOGGED_IN_URL
@@ -113,6 +107,7 @@ const Home: NextPage = () => {
   )
 }
 
+// Prevents static rendering so that env vars can be included
 Home.getInitialProps = async ({ req }) => {
   return {  }
 }
